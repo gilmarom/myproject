@@ -16,7 +16,7 @@ app.engine('html', require('ejs').renderFile);
 
 // Set Static Folder
 
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, '/public/')));
 // Body Parser MW
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -27,7 +27,7 @@ app.use('/', index);
 app.use('/api/contacts', contacts);
 const server = http.createServer(app);
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
+  res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 server.listen(process.env.PORT || 5000, function(){
